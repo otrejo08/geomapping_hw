@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>All Earthquakes in the Past 7 Days</title>
+        <!-- Leaflet CSS &JS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+            integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+            crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+            integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+            crossorigin=""></script>
+        <!-- D3 JavaScript -->
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Our CSS -->
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    </head>
+
+    <body>
+        <!-- <div class="container-fluid"> -->
+            <div class="jumbotron">
+                <h1 class="text-center display-4">All Earthquake Data </h1>
+                <p class="text-center lead">Interactive visualization of earthquakes all over the world (in the past 7 days)</p>
+                <hr class="my-4">
+                <p>Below is a visualization of all the earthquakes in the last seven days. Data was collected from the United
+                States Geological Survey(USGS). LeafletJS is used to plot the data. The data markers reflects the magnitude of the
+                earthquake in their size and color e.g.
+                earthquakes with higher magnitudes appears larger and darker in color. Popups provide additional information about the
+                earthquake when a marker is clicked.
+                A legend provides visual context of earthquake data.</p>
+
+                <!-- The div for the map -->
+                <div id="map-id"></div>
+            </div>
+        <!-- </div> -->
+        
+
+        <!-- Our JS -->
+        <script type="text/javascript" src="static/js/logic.js"></script>
+        </div>
+    </body>
+
+</html>
