@@ -42,7 +42,7 @@ function createFeatures(earthquakeData) {
   createMap(earthquakes);
 }
 
-// Step 4: CreateMap function that creates baseMaps & overLay Maps
+// CreateMap function that creates baseMaps & overLay Maps
 function createMap(earthquakes) {
  
   var outdoors = L.tileLayer(
@@ -59,8 +59,6 @@ function createMap(earthquakes) {
     "https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}?" +
       "access_token=pk.eyJ1Ijoib3RyZWpvMDgiLCJhIjoiY2p0a3o2N253MDYwcDQ1bzZhcGpubTVpYSJ9.r9Q8qHGpcDKknb20ofgeLg"
   );
-
-  // Step 4b: Define a baseMaps object to hold base layers
   
   var baseMaps = {
     Satellite: satellite,
@@ -68,23 +66,19 @@ function createMap(earthquakes) {
     Outdoors: outdoors
   };
 
-  // Step 4c: Create a layer for the tectonic plates
   var tectonicPlates = new L.LayerGroup();
 
-  // Step 4d: Create overlay object to hold overlay layer
   var overlayMaps = {
     Earthquakes: earthquakes,
     "Tectonic Plates": tectonicPlates
   };
 
-  // Step 4e: Create map & layers to display on load
   var myMap = L.map("map-id", {
     center: [37.09, -95.71],
     zoom: 2,
     layers: [satellite, earthquakes]
   });
 
-  // Step 4f: Add Fault lines data
   d3.json(tectonicPlatesURL, function(plateData) {
     L.geoJson(plateData, {
       color: "yellow",
@@ -92,14 +86,12 @@ function createMap(earthquakes) {
     }).addTo(tectonicPlates);
   });
 
-  // Step 4g: Add the layer control to the map
   L.control
     .layers(baseMaps, overlayMaps, {
       collapsed: false
     })
     .addTo(myMap);
 
-  // Step 4h: Set up the legend
   var legend = L.control({
     position: "bottomright"
   });
@@ -109,7 +101,7 @@ function createMap(earthquakes) {
       grades = [0, 1, 2, 3, 4, 5],
       labels = [];
 
-    // loop through our density intervals and generate a label with a colored square for each interval
+    // loop through intervals
     for (var i = 0; i < grades.length; i++) {
       div.innerHTML +=
         '<i style="background:' +
@@ -125,7 +117,7 @@ function createMap(earthquakes) {
   legend.addTo(myMap);
 }
 
-// Step 5: Create color & radius range for the circle diameter for each marker
+// Create color and radius
 function getColor(d) {
   return d > 5
     ? "#800026"
@@ -140,7 +132,7 @@ function getColor(d) {
     : "#FFEDA0";
 }
 
-// Change the maginutde of the earthquake by a factor of 25,000 for the radius of the circle.
+// Change the magnitude of the earthquake by a factor of 25,000 for the radius of the circle.
 function getRadius(value) {
   return value * 55000;
 }
